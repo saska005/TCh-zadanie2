@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pogoda</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Aplikacja Pogodowa</h1>
+    
+    <div>
+        <label for="country">Wybierz kraj:</label>
+        <select id="country"> 
+            <option value="">--Wybierz kraj--</option>
+            <option value="PL">Polska</option>
+            <option value="DE">Niemcy</option>
+            <option value="ES">Hiszpania</option>
+        </select>
+    </div>
+
+    <br>
+
+    <div>
+        <label for="city">Wybierz miasto:</label>
+        <select id="city" disabled>
+            <option value="">--Najpierw wybierz kraj--</option>
+        </select>
+    </div>
+
+    <br>
+    <button id="getWeatherBtn">Wyświetl pogodę</button> 
+
+    <hr>
+    <div id="weatherResult"></div> 
+</html>
