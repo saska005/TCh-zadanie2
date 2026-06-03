@@ -1,6 +1,8 @@
 # Technologie Chmurowe – Zadanie 2
 
-**Sandra Zaremba** 
+**Sandra Zaremba
+** 
+
 **GitHub:** `ghcr.io/saska005/tch-zadanie2`  
 **Docker Hub:** `docker.io/sandrazarrr/tch-zadanie2-cache`
 
@@ -23,13 +25,13 @@ Każde uruchomienie potoku generuje dwa niezależne tagi dla jednego obrazu:
 * **`:latest`** – wskazuje na najnowszą wersję kodu z gałęzi `main`.
 * **`:sha-{{ krótki_hash_commita }}`** – unikalny identyfikator odpowiadający konkretnej rewizji w repozytorium Git.
 
-*Uzasadnienie:** Wykorzystywanie wyłącznie tagu `latest` w środowiskach produkcyjnych jest uznawane za antywzorzec (*anti-pattern*). Uniemożliwia  śledzenie wersji i blokuje możliwość wykonania  wycofania zmian (*rollback*) w przypadku awarii. Zastosowanie unikalnych tagów bazujących na hashu SHA commita zapewnia niezmienność (*immutability*) obrazów, powtarzalność wdrożeń i jednoznaczną identyfikację kodu źródłowego.
+**Uzasadnienie:** Wykorzystywanie wyłącznie tagu `latest` w środowiskach produkcyjnych jest uznawane za antywzorzec (*anti-pattern*). Uniemożliwia  śledzenie wersji i blokuje możliwość wykonania  wycofania zmian (*rollback*) w przypadku awarii. Zastosowanie unikalnych tagów bazujących na hashu SHA commita zapewnia niezmienność (*immutability*) obrazów, powtarzalność wdrożeń i jednoznaczną identyfikację kodu źródłowego.
 
 ### Dane cache w Docker Hub (`docker.io`)
 Warstwy pamięci podręcznej są przesyłane i pobierane przy użyciu dedykowanego tagu:
 * **`:cache`**
 
-*Uzasadnienie:** Odseparowanie warstw cache od tagów wersji aplikacji pozwala utrzymać strukturę rejestru docelowego. Zastosowanie parametru `mode=max` powoduje, że Docker zapisuje cache dla wszystkich etapów budowania (zarówno dla etapu wieloetapowego instalowania zależności `build`, jak i dla końcowej warstwy produkcyjnej). Przy kolejnych uruchomieniach pipeline'u system nie musi ponownie pobierać ani kompilować powtarzających się warstw systemowych, co skraca czas działania potoku.
+**Uzasadnienie:** Odseparowanie warstw cache od tagów wersji aplikacji pozwala utrzymać strukturę rejestru docelowego. Zastosowanie parametru `mode=max` powoduje, że Docker zapisuje cache dla wszystkich etapów budowania (zarówno dla etapu wieloetapowego instalowania zależności `build`, jak i dla końcowej warstwy produkcyjnej). Przy kolejnych uruchomieniach pipeline'u system nie musi ponownie pobierać ani kompilować powtarzających się warstw systemowych, co skraca czas działania potoku.
 
 ---
 
